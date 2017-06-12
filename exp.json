@@ -1,0 +1,41 @@
+{
+  "name": "Justbit Support",
+  "description": "Aplicacion para dar soporte a todos nuestros clientes",
+  "slug": "mobile-support",
+  "privacy": "public",
+  "sdkVersion": "17.0.0",
+  "version": "1.0.0",
+  "primaryColor": "#45336B",
+  "icon": "./assets/icons/app-icon.png",
+  "notification": {
+    "icon": "./assets/icons/notification-icon.png",
+    "color": "#45336B",
+    "androidMode" : "collapse",
+    "androidCollapsedTitle" : "#{unread_notifications} new interactions"
+  },
+  "loading": {
+    "icon": "./assets/icons/loading-icon.png",
+    "hideExponentText": true,
+    "backgroundColor" : "#55387B"
+  },
+  "androidStatusBarColor" : "#45336B",
+  "androidStatusBar" : {
+    "barStyle" : "light-content",
+    "backgroundColor" : "#45336B"
+  },
+  "packagerOpts": {
+    "assetExts": ["ttf"]
+  },
+  "ios": {
+    "supportsTablet": true
+  },
+  "android" : {
+    "package" : "site.justbit.support",
+    "config" : {
+      "googleMaps" : {
+        "apiKey" : "AIzaSyAjfQHEJ_-F0exmEwNZf6Ydog_hZwyfyTw"
+      }
+    },
+    "facebookScheme" : "fb1915081905184893"
+  }
+}
