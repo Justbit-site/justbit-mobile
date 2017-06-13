@@ -2,28 +2,40 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  ListView
+  ListView,
 } from 'react-native';
+import {
+  createRouter
+} from '@expo/ex-navigation';
+import Ripple from 'react-native-material-ripple';
 
+import Router from '../../navigation/Router';
 import CompanyBox from './companyBox';
+import CompanyDetails from '../../screens/CompanyDetails';
 
 export default class CompanyList extends React.Component {
-
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => {
-      r1 !== r2
-    }})
-    const company = {
-      image: 'https://www.justbit.site/wp-content/uploads/2015/12/iMac-Mockup_Sumit-2.jpg',
-      name: 'Justbit',
-      likes: 200,
-      comments: 140
-    }
-    const companies = Array(500).fill(company)
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => { r1 !== r2     }})
     this.state = {
-      dataSource: ds.cloneWithRows(companies)
+      dataSource: ds
     }
+  }
+
+  componentDidMount(){
+    this.updateDataSource(this.props.companies)
+  }
+
+  componentWillReceiveProps(newProps){
+    if(newProps.companies !== this.props.companies){
+      this.updateDataSource(newProps.companies)
+    }
+  }
+
+  updateDataSource = data => {
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(data)
+    })
   }
 
   static route = {
@@ -32,13 +44,25 @@ export default class CompanyList extends React.Component {
     },
   };
 
+  handlePress(company){
+    this.props.navigator.push(Router.getRoute('companyDetails', {company}));
+  }
+
   render() {
     return (
       <ListView
+        enableEmptySections={true}
         style={styles.container}
         dataSource={this.state.dataSource}
-        renderRow={(company) => <CompanyBox company={company}/> } />
-    );
+        renderRow={(company) => {
+          return(
+            <Ripple style={styles.companyBox}
+            onPress={() => this.handlePress(company)}>
+              <CompanyBox company={company}/>
+            </Ripple>
+          )
+        }} />
+  );
   }
 }
 
@@ -46,5 +70,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#eeeeee'
-  }
+  },
+  companyBox: {
+    margin: 5,
+    backgroundColor: '#ffffff',
+    flexDirection: 'row',
+    // Shadow in iOs
+    shadowColor: '#000000',
+    shadowOpacity: .2,
+    shadowOffset: {
+      height: 1,
+      width: -2
+    },
+    // Shadow in android
+    elevation: 2
+  },
 });

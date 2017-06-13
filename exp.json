@@ -11,7 +11,7 @@
     "icon": "./assets/icons/notification-icon.png",
     "color": "#45336B",
     "androidMode" : "collapse",
-    "androidCollapsedTitle" : "#{unread_notifications} new interactions"
+    "androidCollapsedTitle" : "#{unread_notifications} Nuevas notificaciones"
   },
   "loading": {
     "icon": "./assets/icons/loading-icon.png",
@@ -36,6 +36,5 @@
         "apiKey" : "AIzaSyAjfQHEJ_-F0exmEwNZf6Ydog_hZwyfyTw"
       }
     },
-    "facebookScheme" : "fb1915081905184893"
   }
 }

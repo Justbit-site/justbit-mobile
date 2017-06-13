@@ -37,7 +37,7 @@ export default class HomeScreen extends React.Component {
               Acerca de nosotros
             </Text>
 
-            <Text style={{width: 500}}>
+            <Text style={{margin: 10}}>
               Somos una start-up que nació de jóvenes, apasionados por el desarrollo de aplicaciones Web y móviles, también por el constante aprendizaje y el mejoramiento de nuestras habilidades, buscando la creación de grandes productos en colaboración conjunta de nuestros clientes, para el crecimiento mutuo.
             </Text>
           </View>
