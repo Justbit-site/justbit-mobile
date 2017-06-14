@@ -6,6 +6,7 @@ export function getCompanies(){
     .then(data => data.topartists.artist)
     .then(companies => companies.map(company => {
       return {
+        id: company.mbid,
         name: company.name,
         image: company.image[3]['#text'],
         likes: 200,

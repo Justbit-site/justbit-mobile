@@ -21,9 +21,9 @@ export default class companyDetails extends React.Component {
     const company = this.props.route.params.company
     return (
       <View style={styles.container}>
-        <Ripple style={styles.companyBox}>
+        <View style={styles.companyBox}>
           <CompanyBox company={company}/>
-        </Ripple>
+        </View>
       </View>
     );
   }
