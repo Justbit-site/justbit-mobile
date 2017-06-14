@@ -10,31 +10,38 @@
   "notification": {
     "icon": "./assets/icons/notification-icon.png",
     "color": "#45336B",
-    "androidMode" : "collapse",
-    "androidCollapsedTitle" : "#{unread_notifications} Nuevas notificaciones"
+    "androidMode": "collapse",
+    "androidCollapsedTitle": "#{unread_notifications} Nuevas notificaciones"
   },
   "loading": {
     "icon": "./assets/icons/loading-icon.png",
     "hideExponentText": true,
-    "backgroundColor" : "#55387B"
+    "backgroundColor": "#55387B"
   },
-  "androidStatusBarColor" : "#45336B",
-  "androidStatusBar" : {
-    "barStyle" : "light-content",
-    "backgroundColor" : "#45336B"
+  "androidStatusBarColor": "#45336B",
+  "androidStatusBar": {
+    "barStyle": "light-content",
+    "backgroundColor": "#45336B"
   },
   "packagerOpts": {
-    "assetExts": ["ttf"]
+    "assetExts": [
+      "ttf"
+    ]
   },
   "ios": {
     "supportsTablet": true
   },
-  "android" : {
-    "package" : "site.justbit.support",
-    "config" : {
-      "googleMaps" : {
-        "apiKey" : "AIzaSyAjfQHEJ_-F0exmEwNZf6Ydog_hZwyfyTw"
+  "android": {
+    "package": "site.justbit.support",
+    "config": {
+      "googleMaps": {
+        "apiKey": "AIzaSyAjfQHEJ_-F0exmEwNZf6Ydog_hZwyfyTw"
       }
-    },
+    }
+  },
+  "isDetached": true,
+  "detach": {
+    "scheme": "exp5ac6a3ae7acc4126aa37ac01d5ba5a7c",
+    "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v1.16.1-sdk17.0.0-bf7bf150-6f10-4b8a-8906-a1fc69392aa4.tar.gz"
   }
 }
