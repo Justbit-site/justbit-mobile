@@ -41,7 +41,7 @@
   },
   "isDetached": true,
   "detach": {
-    "scheme": "exp5ac6a3ae7acc4126aa37ac01d5ba5a7c",
+    "scheme": "exp",
     "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v1.16.1-sdk17.0.0-bf7bf150-6f10-4b8a-8906-a1fc69392aa4.tar.gz"
   }
 }
