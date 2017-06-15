@@ -12,18 +12,36 @@ import { firebaseDatabase } from '../../config/firebase';
 import { randomId } from '../../helpers/randomId';
 
 export default class CompanyBox extends React.Component {
-  constructor(props){
-    super(props)
-    state = {
-      liked: false,
-      likeCount: 0,
-      uid: randomId()
-    }
+  state = {
+    liked: false,
+    likeCount: 0,
+    uid: randomId()
+  }
+
+  handlePress = () => {
+    this.toggleLike(this.getCompanyRef(), this.state.liked, this.state.uid)
+  }
+
+  getCompanyRef = () => {
+    const { id } = this.props.company
+    return firebaseDatabase.ref(`company/${id}`)
+  }
+
+  componentWillMount() {
+    this.getArtistRef().on('value', snapshot => {
+      const artist = snapshot.val()
+      if (artist) {
+        this.setState({
+          likeCount: artist.likeCount,
+          liked: artist.likes && artist.likes[uid]
+        })
+      }
+    })
   }
 
   componentWillMount(){
     this.getCompanyRef().on('value', snapshot => {
-      const company =  snapshot.val()
+      const company = snapshot.val()
       if (company) {
         this.setState({
           likeCount: company.likeCount,
@@ -31,15 +49,6 @@ export default class CompanyBox extends React.Component {
         })
       }
     })
-  }
-
-  handlePress = () => {
-    this.toggleLike(this.getCompanyRef(), this.state.liked, uuid)
-  }
-
-  getCompanyRef = () => {
-    const { id } = this.props.company
-    return firebaseDatabase.ref(`company/${id}`)
   }
 
   toggleLike = (companyRef, liked, uid) => {
@@ -67,8 +76,7 @@ export default class CompanyBox extends React.Component {
 
   render() {
     const { image, name, likes, comments } = this.props.company;
-    const { likeCount } = this.state
-
+    const { likeCount } = this.state;
     return (
         <View style={styles.container}>
           <Image style={styles.image} source={{ uri: image}} />
@@ -76,11 +84,11 @@ export default class CompanyBox extends React.Component {
             <Text style={styles.name}>{name}</Text>
             <View style={styles.row}>
               <View style={styles.iconContainer}>
-                <Ripple
-                    style={styles.rippleIcons}
-                    onPress={this.handlePress}>
-                  <Ionicons name="md-heart" size={30} color={this.state.liked ? '#e74c3c' : '#ecf0f1'} />
-                </Ripple>
+                  <Ripple
+                      style={styles.rippleIcons}
+                      onPress={this.handlePress}>
+                    <Ionicons name="md-heart" size={30} color={this.state.liked ? '#e74c3c' : '#ecf0f1'} />
+                  </Ripple>
                 <Text style={styles.count}>{likeCount}</Text>
               </View>
               <View style={styles.iconContainer}>
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   count: {
     color: '#ccc'

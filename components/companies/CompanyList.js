@@ -58,7 +58,7 @@ export default class CompanyList extends React.Component {
           return(
             <Ripple style={styles.companyBox}
             onPress={() => this.handlePress(company)}>
-              <CompanyBox company={company}/>
+              <CompanyBox company={company} />
             </Ripple>
           )
         }} />
